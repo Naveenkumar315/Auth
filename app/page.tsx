@@ -9,7 +9,7 @@ const Home = () => {
       <SessionProvider>
         <UserButton />
         <div className="flex items-center justify-center mt-5">
-          <h1>Welecome Home</h1>
+          <h1>Welcome Home</h1>
         </div>
       </SessionProvider>
       {/* </div> */}

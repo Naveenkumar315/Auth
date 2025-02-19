@@ -19,6 +19,11 @@ import { useRouter } from "next/navigation";
 import { AlertTriangle } from "lucide-react";
 import { signIn } from "next-auth/react";
 
+interface SignupResponse {
+  message: string;
+  status: number;
+}
+
 const SignUp = () => {
   const router = useRouter();
   const [form, setForm] = useState({
@@ -28,14 +33,13 @@ const SignUp = () => {
     confirmPassword: "",
   });
   const [pending, setPending] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("");
   const handleSubmit = async (e: React.FormEvent) => {
-    debugger;
     e.preventDefault();
     setPending(true);
 
     try {
-      const { data }: any = await axios.post("/api/signup", form, {
+      const { data } = await axios.post<SignupResponse>("/api/signup", form, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -64,7 +68,6 @@ const SignUp = () => {
     event: React.MouseEvent<HTMLButtonElement>,
     value: "google" | "github"
   ) => {
-    debugger;
     event.preventDefault();
     signIn(value, {
       callbackUrl: "/",
@@ -145,7 +148,7 @@ const SignUp = () => {
               <Button
                 disabled={false}
                 onClick={(e) => {
-                  signIn("github", { callbackUrl: "/" });
+                  handleProvider(e, "github");
                 }}
                 variant="outline"
                 size={"lg"}

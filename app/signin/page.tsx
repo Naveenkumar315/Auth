@@ -28,7 +28,6 @@ const SignIn = () => {
   const [pending, setPending] = useState(false);
   const [error, setError] = useState("");
   const handleSubmit = async (e: React.FormEvent) => {
-    debugger;
     e.preventDefault();
     setPending(true);
     const res = await signIn("credentials", {
@@ -52,7 +51,6 @@ const SignIn = () => {
     event: React.MouseEvent<HTMLButtonElement>,
     value: "google" | "github"
   ) => {
-    debugger;
     event.preventDefault();
     signIn(value, {
       callbackUrl: "/",

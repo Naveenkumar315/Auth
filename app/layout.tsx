@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     siteName: "Authentication Application",
     images: [
       {
-        url: "../public/logoipsum-332.svg", // Replace with your OG image URL
+        url: "/logoipsum-332.svg", // Replace with your OG image URL
         width: 1200,
         height: 630,
         alt: "Your App Preview Image",
